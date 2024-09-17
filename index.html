@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório - Arduino</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>FACULDADE ANHANGUERA DE UBERLÂNDIA</h1>
+        <h2>Curso de Graduação em Sistemas de Informação</h2>
+        <h3>Disciplina de Desenvolvimento de Sistemas de Informação</h3>
+        <h4>Professor: Rodrigo Morais</h4>
+    </header>
+
+    <section class="report">
+        <h2>Relatório: Potenciômetro</h2>
+        <p>Ana Júlia Fernandes Oliveira<br>
+           Amanda Nelma Prado Borges<br>
+           Laryssa Nogueira Alves<br>
+           Livia Rayssa Oliveira Silva<br>
+           Luiz Paulo Parreira Lima</p>
+      
+    </section>
+
+
+
+    <section>
+        <h2>Introdução</h2>
+        <p>O potenciômetro é um componente eletrônico que tem como função variar a resistência elétrica do circuito. Costumam ser representados por botões em formato circular, aumentando, de forma gradual, a intensidade de volume ou potência de equipamentos eletrônicos como, os amplificadores de áudio, instrumentos musicais eletrônicos, eletrodomésticos, televisores, joysticks, entre outros.
+            Os potenciômetros, geralmente apresentam três terminais acessíveis, sendo que dois são os extremos fixos, e o terceiro é o central, móvel, chamado de cursor, que pode ajustar sua resistência de um extremo ao outro, tendo o valor máximo de 10KΩ (quiloohms), os modelos mais comuns. 
+            O valor do potenciômetro varia conforme a rotação de sua haste, por isso deve ser conectado em uma porta analógica da placa do Arduino Uno, ideal para esta forma de leitura. No Arduino, o potenciômetro funciona como um divisor de tensão que permite controlar a frequência de piscar de um LED. A redução da corrente elétrica em um circuito em que possuem um valor fixo de sua resistência, pode ser realizada pelo potenciômetro, porém sua resistência pode ser ajustada.
+            </p>
+    </section>
+
+    <section>
+        <h2>Objetivos</h2>
+        <p>O objetivo da aula prática foi entender o potenciômetro e identificar seus elementos, além de programar o seu funcionamento ligado a uma placa de arduino.</p>
+    </section>
+
+    <section>
+        <h2>Materiais Utilizados</h2>
+        <ul>
+            <li>Arduino Uno R3</li>
+            <li>Placa de Ensaio</li>
+            <li>Potenciômetro</li>
+            <li>Software Arduino IDE</li>
+            <li>Notebook</li>
+            <li>LED Vermelho</li>
+            <li>Resistor </li>
+            <li>Placa de Ensaio</li>
+            <li>Fios jumpers</li>
+            <li>Cabo USB</li>
+            
+        </ul>
+    </section>
+
+    <section>
+        <h2>Diagrama do Circuito</h2>
+        <img src="foto2.jpeg" alt="Diagrama do Circuito Alternativo" class="circuit-image">
+    </section>
+
+    <section>
+        <h2>Código Fonte</h2>
+        <pre>
+<code>
+    // C++ code
+    //
+    int potenciometro = A0;
+    int led = 3;
+    int valor_lido = 0;
+    
+    void setup()
+    {
+      pinMode(potenciometro, INPUT);
+      pinMode(led, OUTPUT);
+      Serial.begin(9600);
+    }
+    
+    void loop()
+    {
+      valor_lido = map(analogRead(potenciometro),0,1023,0,255);
+      analogWrite(led,valor_lido);
+      Serial.println(valor_lido);
+      delay(10);
+    }
+    
+        </code>
+        </pre>
+    </section>
+
+    <section>
+        <h2>Procedimentos</h2>
+        <h3>Montagem do Circuito</h3>
+       
+        <ol>
+            <li>Conecte o pino do meio do potenciômetro ao pino analógico A0 do Arduino.</li>
+            <li>Conecte um dos outros pinos do potenciômetro ao GND do Arduino. </li>
+            <li>Conecte o terceiro pino do potenciômetro ao VCC (5V) do Arduino. </li>
+            <li>Insira o LED no protoboard, conectando o terminal positivo (anodo) ao pino digital -3 do Arduino através de um resistor de 220 ohms.</li>
+            <li>O terminal negativo (catodo) do LED deve ser conectado ao GND.</li>
+      
+    </section>
+
+    <section>
+        <h2>Resultados</h2>
+        <p>Após a montagem e o upload do código, observou-se que o brilho do LED variava conforme a rotação do potenciômetro. Quando o potenciômetro estava na posição mínima, o LED apagava completamente, e na posição máxima, o LED emitia seu brilho máximo. A variação de brilho era suave e respondia de maneira adequada ao movimento do potenciômetro.</p>
+    </section>
+
+    <section>
+        <h2>Discussão</h2>
+        <p>
+            O projeto funcionou conforme o esperado, demonstrando como o Arduino pode ser utilizado para controlar dispositivos analógicos, como o LED, através de um componente simples como o potenciômetro.
+            </p>
+    </section>
+
+    <section>
+        <h2>Conclusão</h2>
+        <p>O objetivo da aula prática foi concluído com excelência, pois pudemos ver a importância da colaboração e cooperação dos integrantes do grupo entre si, onde foi compartilhado ideias que promoveram conhecimento e o desenvolvimento do projeto. Além disso, foi desenvolvido ao longo da prática o pensamento crítico e resolução de problemas ao tomar decisões de modo que contribuíram positivamente para o funcionamento correto da proposta da aula. </p>
+    </section>
+
+    <section>
+        <h2>Referências</h2>
+        <ul>
+            <li><a href="https://aluno.escoladigital.pr.gov.br/sites/alunos/arquivos_restritos/files/documento/2021-04/aula23_potenciometro.pdf">Arduino Documentação</a></li>
+        </ul>
+    </section>
+</body>
+</html>
